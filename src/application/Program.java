@@ -32,9 +32,7 @@ public class Program {
 
 		if (opcaoMenu.equals("C")) {
 			cadastrarPerfil();
-		}
-
-		else if (opcaoMenu.equals("E")) {
+		} else if (opcaoMenu.equals("E")) {
 			if (perfisCadastrados.isEmpty()) {
 				System.out.print("\nDesculpe, ainda não há perfis cadastrados.\n");
 				System.out.print("Acesse as opções 'Cadastrar-se' ou 'Fechar'.\n\n");
@@ -45,9 +43,7 @@ public class Program {
 		} else if (opcaoMenu.equals("F")) {
 			encerrar = 1;
 			System.out.println("\nObrigado por usar o AdaCoders!");
-		}
-
-		else {
+		} else {
 			System.out.println("\nOpção inválida!");
 			menuInicial();
 		}
@@ -57,7 +53,6 @@ public class Program {
 		String nome = cadastrarNome();
 		String login = criarLogin();
 		String senha = cadastrarSenha();
-
 		Perfil perfil = new Perfil(nome, login, senha);
 		perfisCadastrados.add(perfil);
 		System.out.println("\nPerfil criado com sucesso! \n");
@@ -78,7 +73,6 @@ public class Program {
 	public static String criarLogin() {
 		System.out.print("\nDigite um login para criar: ");
 		String login = sc.nextLine();
-
 		for (Perfil perfil : perfisCadastrados) {
 			if (login.equals(perfil.getLogin())) {
 				System.out.println("\nEsse login já existe! Favor digitar outro login.");
@@ -110,14 +104,12 @@ public class Program {
 	}
 
 	public static void efetuarLogin() {
-
 		try {
 			int loginExiste = 0;
 			System.out.print("\nDigite seu login: ");
 			String login = sc.nextLine();
 			System.out.print("Digite sua senha: ");
 			String senha = sc.nextLine();
-
 			for (int i = 0; i < perfisCadastrados.size(); i++) {
 				if (perfisCadastrados.get(i).getLogin().equals(login)) {
 					loginExiste = 1;
@@ -139,7 +131,6 @@ public class Program {
 		} catch (InvalidPasswordException e) {
 			System.out.println(e.getMessage());
 		}
-
 	}
 
 	public static void listarPerfis() {
@@ -147,5 +138,4 @@ public class Program {
 			System.out.println(perfil);
 		}
 	}
-
 }

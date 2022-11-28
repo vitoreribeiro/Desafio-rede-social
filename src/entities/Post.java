@@ -33,6 +33,5 @@ public class Post {
 	@Override
 	public String toString() {
 		return data + " às " + hora + "min - '" + conteudo + "'.\n";
-	}
-	
+	}	
 }
