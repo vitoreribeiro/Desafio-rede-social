@@ -1,4 +1,4 @@
-package application;
+package rede_social;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,20 +8,15 @@ import entities.Perfil;
 import exceptions.InvalidPasswordException;
 import exceptions.UserNotFoundException;
 
-public class Program {
+public class Applications {
 
-	public static Scanner sc = new Scanner(System.in);
-	public static List<Perfil> perfisCadastrados = new ArrayList<Perfil>();
-	static int encerrar = 0;
+	private Scanner sc = new Scanner(System.in);
+	private List<Perfil> perfisCadastrados = new ArrayList<Perfil>();
+	private int encerrar = 0;
 
-	public static void main(String[] args) {
-		do {
-			menuInicial();
-		} while (encerrar == 0);
-		sc.close();
-	}
 
-	public static void menuInicial() {
+
+	protected void menuInicial() {
 		System.out.print("\n----------------------------------------- \n");
 		System.out.print("******** Bem-vindo ao AdaCoders! ********\n " + "- A rede social dos alunos DevMakers! - "
 				+ "\n----------------------------------------- \n");
@@ -41,7 +36,7 @@ public class Program {
 				efetuarLogin();
 			}
 		} else if (opcaoMenu.equals("F")) {
-			encerrar = 1;
+			setEncerrar(1);
 			System.out.println("\nObrigado por usar o AdaCoders!");
 		} else {
 			System.out.println("\nOpção inválida!");
@@ -49,7 +44,7 @@ public class Program {
 		}
 	}
 
-	private static void cadastrarPerfil() {
+	private void cadastrarPerfil() {
 		String nome = cadastrarNome();
 		String login = criarLogin();
 		String senha = cadastrarSenha();
@@ -60,7 +55,7 @@ public class Program {
 		menuInicial();
 	}
 
-	public static String cadastrarNome() {
+	private String cadastrarNome() {
 		System.out.print("\nComo você deseja ser chamado? ");
 		String nome = sc.nextLine();
 		if (nome.isEmpty() || nome == null || nome.trim().equals("")) {
@@ -70,7 +65,7 @@ public class Program {
 		return nome;
 	}
 
-	public static String criarLogin() {
+	private String criarLogin() {
 		System.out.print("\nDigite um login para criar: ");
 		String login = sc.nextLine();
 		for (Perfil perfil : perfisCadastrados) {
@@ -86,7 +81,7 @@ public class Program {
 		return login;
 	}
 
-	public static String cadastrarSenha() {
+	private String cadastrarSenha() {
 		System.out.print("\nDigite uma senha de ao menos 8 caracteres: ");
 		String senha = sc.nextLine();
 		if (senha.length() < 8 || senha.isEmpty() || senha == null || senha.trim().equals("")) {
@@ -103,7 +98,7 @@ public class Program {
 		return senha;
 	}
 
-	public static void efetuarLogin() {
+	private void efetuarLogin() {
 		try {
 			int loginExiste = 0;
 			System.out.print("\nDigite seu login: ");
@@ -133,9 +128,18 @@ public class Program {
 		}
 	}
 
-	public static void listarPerfis() {
+	private void listarPerfis() {
 		for (Perfil perfil : perfisCadastrados) {
 			System.out.println(perfil);
 		}
 	}
+
+	public int getEncerrar() {
+		return encerrar;
+	}
+
+	public void setEncerrar(int encerrar) {
+		this.encerrar = encerrar;
+	}
+
 }
