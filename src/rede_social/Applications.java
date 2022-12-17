@@ -51,7 +51,6 @@ public class Applications {
 		Perfil perfil = new Perfil(nome, login, senha);
 		perfisCadastrados.add(perfil);
 		System.out.println("\nPerfil criado com sucesso! \n");
-		listarPerfis();
 		menuInicial();
 	}
 
@@ -128,12 +127,6 @@ public class Applications {
 		}
 	}
 
-	private void listarPerfis() {
-		for (Perfil perfil : perfisCadastrados) {
-			System.out.println(perfil);
-		}
-	}
-
 	public int getEncerrar() {
 		return encerrar;
 	}
@@ -141,5 +134,11 @@ public class Applications {
 	public void setEncerrar(int encerrar) {
 		this.encerrar = encerrar;
 	}
+	
+//	private void listarPerfis() {
+//		for (Perfil perfil : perfisCadastrados) {
+//			System.out.println(perfil);
+//		}
+//	}
 
 }
