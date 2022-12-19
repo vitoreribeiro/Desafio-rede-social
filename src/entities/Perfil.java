@@ -51,11 +51,12 @@ public class Perfil {
 	}
 
 	public void menuPerfil() {
-		String opcaoMenuPerfil;	
+		String opcaoMenuPerfil;
 		do {
 			System.out.print("\n----------------------------------------- \n");
 			System.out.println("\nBem-vindo de volta, " + this.nome + "!");
-			System.out.println("\nO que deseja fazer?\n  'P' para Postar; \n  'T' para Timeline; ou \n  'S' para Sair.\n");
+			System.out.println(
+					"\nO que deseja fazer?\n  'P' para Postar; \n  'T' para Timeline; ou \n  'S' para Sair.\n");
 			opcaoMenuPerfil = sc.nextLine().toUpperCase();
 			System.out.print("\n----------------------------------------- \n");
 			switch (opcaoMenuPerfil) {
@@ -78,21 +79,17 @@ public class Perfil {
 	private void postar() {
 		int postValido = 0;
 		while (postValido == 0) {
-			System.out.print("Qual a data do post (dd/MM/yyyy)?  ");
-			String data = sc.nextLine();
-			System.out.print("Qual a hora do post (hh:mm)?  ");
-			String hora = sc.nextLine();
+
 			System.out.print("Digite o texto que deseja postar:  ");
 			String texto = sc.nextLine();
 
-			if (data.trim().equals("") || data.isEmpty() || hora.trim().equals("") || hora.isEmpty()
-					|| texto.trim().equals("") || texto.isEmpty()) {
+			if (texto.trim().equals("") || texto.isEmpty()) {
 				postValido = 0;
 			} else {
-				Post post = new Post(data, hora, texto);
+				Post post = new Post(texto);
 				postsUsuario.add(post);
 				postValido = 1;
-				System.out.println("\nPost realizado com sucesso!\n");		
+				System.out.println("\nPost realizado com sucesso!\n");
 			}
 		}
 	}
@@ -100,8 +97,7 @@ public class Perfil {
 	private void timeline() {
 		if (postsUsuario.size() == 0) {
 			System.out.println("\nVocê ainda não publicou nenhum post!\n");
-		}
-		else {
+		} else {
 			for (Post post : postsUsuario) {
 				System.out.println(post);
 			}

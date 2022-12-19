@@ -1,37 +1,40 @@
 package entities;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Post {
 
-	private String data;
-	private String hora;
-	private String conteudo;
-	public Post(String data, String hora, String conteudo) {
+	// data/hora atual
+	LocalDateTime agora = LocalDateTime.now();
 
-		this.data = data;
-		this.hora = hora;
+	// formatar a data
+	DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private String dataFormatada = formatterData.format(agora);
+
+	// formatar a hora
+	DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("HH:mm");
+	private String horaFormatada = formatterHora.format(agora);
+	private String conteudo;
+
+	public Post(String conteudo) {
 		this.conteudo = conteudo;
 	}
-	public String getData() {
-		return data;
+
+	public String getDataFormatada() {
+		return dataFormatada;
 	}
-	public void setData(String data) {
-		this.data = data;
+
+	public String getHoraFormatada() {
+		return horaFormatada;
 	}
-	public String getHora() {
-		return hora;
-	}
-	public void setHora(String hora) {
-		this.hora = hora;
-	}
+
 	public String getConteudo() {
 		return conteudo;
 	}
-	public void setConteudo(String conteudo) {
-		this.conteudo = conteudo;
-	}
-	
+
 	@Override
 	public String toString() {
-		return data + " às " + hora + "min - '" + conteudo + "'.\n";
-	}	
+		return dataFormatada + " às " + horaFormatada + "min - '" + conteudo + "'.\n";
+	}
 }

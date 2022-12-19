@@ -14,8 +14,6 @@ public class Applications {
 	private List<Perfil> perfisCadastrados = new ArrayList<Perfil>();
 	private int encerrar = 0;
 
-
-
 	protected void menuInicial() {
 		System.out.print("\n----------------------------------------- \n");
 		System.out.print("******** Bem-vindo ao AdaCoders! ********\n " + "- A rede social dos alunos DevMakers! - "
@@ -134,7 +132,7 @@ public class Applications {
 	public void setEncerrar(int encerrar) {
 		this.encerrar = encerrar;
 	}
-	
+
 //	private void listarPerfis() {
 //		for (Perfil perfil : perfisCadastrados) {
 //			System.out.println(perfil);

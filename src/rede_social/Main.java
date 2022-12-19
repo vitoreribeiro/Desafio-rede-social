@@ -11,7 +11,7 @@ public class Main {
 			program.menuInicial();
 
 		} while (program.getEncerrar() == 0);
-		
+
 		sc.close();
 
 	}
